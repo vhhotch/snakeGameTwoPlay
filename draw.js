@@ -1,13 +1,51 @@
-// Module pattern
-var drawModule = (function () { 
-    var bodySnake = function(x, y) {
-        // This is the single square
+class Snake {
+    constructor (name, color){
+        this.name = name;
+        this.length = 4;
+        this.snakeBody = []
+        this.color = color
+        this.leftDirect 
+        this
+    }
+    bodySnake (x,y){
         ctx.fillStyle = 'green';
         ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
         // This is the border of the square
         ctx.strokeStyle = 'darkgreen';
         ctx.strokeRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
     }
+
+    drawSnake () {
+        // Initially the body of the snake will be formed by 5 squares.
+        for (var i = this.length; i>=0; i--) {
+            this.snakeBody.push({x:i, y:0});
+        }
+    }
+
+    directSnake () {
+        if (direction == 'right') {
+            snakeX++;
+        } else if (direction == 'left') {
+            snakeX--;
+        } else if (direction == 'up') {
+            snakeY--;
+        } else if (direction == 'down') {
+            snakeY++;
+        }
+    }
+
+}
+
+// Module pattern
+var drawModule = (function () { 
+    // var bodySnake = function(x, y) {
+    //     // This is the single square
+    //     ctx.fillStyle = 'green';
+    //     ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
+    //     // This is the border of the square
+    //     ctx.strokeStyle = 'darkgreen';
+    //     ctx.strokeRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
+    // }
 
     var pizza = function(x, y) {
         // This is the border of the pizza
@@ -25,17 +63,17 @@ var drawModule = (function () {
         ctx.fillText(score_text, 145, h-5);
     }
 
-    var drawSnake = function() {
-        // Initially the body of the snake will be formed by 5 squares.
-        var length = 4;
-        snake = [];
+    // var drawSnake = function() {
+    //     // Initially the body of the snake will be formed by 5 squares.
+    //     var length = 4;
+    //     snake = [];
         
-        // Using a for loop we push the 5 elements inside the array(squares).
-        // Every element will have x = 0 and the y will take the value of the index.
-        for (var i = length; i>=0; i--) {
-            snake.push({x:i, y:0});
-        }  
-    }
+    //     // Using a for loop we push the 5 elements inside the array(squares).
+    //     // Every element will have x = 0 and the y will take the value of the index.
+    //     for (var i = length; i>=0; i--) {
+    //         snake.push({x:i, y:0});
+    //     }  
+    // }
     var foodCheck = function () {//Look at the position of the snake's body.
         for (var i=0; i<snake.length; i++) {
         var snakeX = snake[i].x;
@@ -84,15 +122,15 @@ var paint = function () {
     Use a variable ('direction') to control the movement.
     To move the snake, pop out the last element of the array and shift it on the top as first element.
     */
-    if (direction == 'right') {
-        snakeX++;
-    } else if (direction == 'left') {
-        snakeX--;
-    } else if (direction == 'up') {
-        snakeY--;
-    } else if (direction == 'down') {
-        snakeY++;
-    }
+    // if (direction == 'right') {
+    //     snakeX++;
+    // } else if (direction == 'left') {
+    //     snakeX--;
+    // } else if (direction == 'up') {
+    //     snakeY--;
+    // } else if (direction == 'down') {
+    //     snakeY++;
+    // }
 
     /*
     If the snake touches the canvas path or itself, it will die!
@@ -134,9 +172,10 @@ var paint = function () {
     snake.unshift(tail);
 
     //For each element of the array create a square using the bodySnake function we created before.
-    for (var i = 0; i < snake.length; i++) {
-        bodySnake(snake[i].x, snake[i].y);
-    }
+   
+        
+    snake.bodySnake(snake[i].x, snake[i].y);
+    
 
     //Create food using the _pizza_ function.
     pizza(food.x, food.y);
