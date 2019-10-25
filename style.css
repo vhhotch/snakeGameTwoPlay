@@ -1,0 +1,9 @@
+body {
+    background-color: rgb(150, 202, 150);
+    text-align: center;
+}
+
+.snake {
+    font-family:'Indie Flower', cursive;
+    font-size: 10vh;
+}
