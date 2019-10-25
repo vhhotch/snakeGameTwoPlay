@@ -23,6 +23,7 @@ class Snake {
         this.snakeBody = [];
         this.color = color; 
         this.snakeSize = 10;
+        this.score = 0;
     }
     bodySnake (x,y){
         ctx.fillStyle = 'green';
@@ -55,6 +56,29 @@ class Snake {
 
 }
 
+class Game {
+
+    //within game we have two snakes playing at any one time. 
+    //the two snakes are created using the snake class, and passed into the game class as an array. There will be 2 snakes. this.snakes[0] this.snakes[1]
+    constructor (snakes, food) {
+        this.snakes = snakes;
+        this.food = food;
+    }
+
+
+    start () {
+
+    }
+
+
+    scoreText () {
+        // How many pizzas did the snake eat
+        var score_text = "Score: " + this.snakes.score;
+        ctx.fillStyle = 'blue';
+        ctx.fillText(score_text, 145, h-5);
+    }
+}
+
 // Module pattern
 var drawModule = (function () { 
     // var bodySnake = function(x, y) {
@@ -75,12 +99,12 @@ var drawModule = (function () {
     //     ctx.fillRect(x*snakeSize+1, y*snakeSize+1, snakeSize-2, snakeSize-2);
     // }
 
-    var scoreText = function() {
-        // How many pizzas did the snake eat
-        var score_text = "Score: " + score;
-        ctx.fillStyle = 'blue';
-        ctx.fillText(score_text, 145, h-5);
-    }
+    // var scoreText = function() {
+    //     // How many pizzas did the snake eat
+    //     var score_text = "Score: " + score;
+    //     ctx.fillStyle = 'blue';
+    //     ctx.fillText(score_text, 145, h-5);
+    // }
 
     // var drawSnake = function() {
     //     // Initially the body of the snake will be formed by 5 squares.
