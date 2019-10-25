@@ -1,11 +1,28 @@
+class FoodPizza {
+    constructor () {
+        this.name = pizza;
+        this.borderColor = "yellow";
+        this.fillColor= "red";
+        this.foodSize = 10
+    }
+    
+    pizza (x, y) {
+        // This is the border of the pizza
+        ctx.fillStyle = this.color;
+        ctx.fillRect(x*this.foodSize, y*this.foodSize, this.foodSize, this.foodSize);
+        // This is the single square 
+        ctx.fillStyle = this.fillColor;
+        ctx.fillRect(x*this.foodSize+1, y*this.foodSize+1, this.foodSize-2, this.foodSize-2);
+    }
+}
+
 class Snake {
     constructor (name, color){
         this.name = name;
         this.length = 4;
-        this.snakeBody = []
-        this.color = color
-        this.leftDirect 
-        this
+        this.snakeBody = [];
+        this.color = color; 
+        this.snakeSize = 10;
     }
     bodySnake (x,y){
         ctx.fillStyle = 'green';
@@ -22,6 +39,8 @@ class Snake {
         }
     }
 
+    
+    //not sure how to link this properly with app.js
     directSnake () {
         if (direction == 'right') {
             snakeX++;
@@ -47,14 +66,14 @@ var drawModule = (function () {
     //     ctx.strokeRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
     // }
 
-    var pizza = function(x, y) {
-        // This is the border of the pizza
-        ctx.fillStyle = 'yellow';
-        ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
-        // This is the single square 
-        ctx.fillStyle = 'red';
-        ctx.fillRect(x*snakeSize+1, y*snakeSize+1, snakeSize-2, snakeSize-2);
-    }
+    // var pizza = function(x, y) {
+    //     // This is the border of the pizza
+    //     ctx.fillStyle = 'yellow';
+    //     ctx.fillRect(x*snakeSize, y*snakeSize, snakeSize, snakeSize);
+    //     // This is the single square 
+    //     ctx.fillStyle = 'red';
+    //     ctx.fillRect(x*snakeSize+1, y*snakeSize+1, snakeSize-2, snakeSize-2);
+    // }
 
     var scoreText = function() {
         // How many pizzas did the snake eat
@@ -178,7 +197,7 @@ var paint = function () {
     
 
     //Create food using the _pizza_ function.
-    pizza(food.x, food.y);
+    FoodPizza.pizza(food.x, food.y);
 
     //Put the score text.
     scoreText();
